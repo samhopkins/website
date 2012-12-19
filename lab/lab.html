@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>lab</title>
+    <link rel="stylesheet" href="lab.css">
+  </head>
+  <body>
+    <h1>Lakeside Dart Lab</h1>
+    
+    Much of this content is shamelessly stolen 
+    from <a href="http://www.cs.washington.edu/education/courses/cse190m/12su/labs/lab6-pimpmytext.shtml#">here</a>.
+    I (Sam Hopkins) take responsibility for any errors.
+    <p>
+    Today you'll write a page where the user can type text into a box, and by
+    clicking on UI controls, can apply various transformations to the text. The
+    HTML page arrested_development.html contains (almost) all the HTML you need,
+    and links to a CSS file that defines all the styles you need. You need not
+    write any CSS code today.  You will write a Dart file
+    arrested_development.dart that will manipulate the text.
+    <ol>
+      <li> Make a directory in which you will do this lab.
+      <li> Download the html file <a href="arrested_development.html">here</a>
+      (right-click, Save Target As...) to get started. Put it in your lab
+      directory.
+      <li> The Dart editor has all sorts of tools and boilerplate-automation
+      that would be very useful for building a production Dart app but which we
+      will basically ignore today. Open the Dart editor, and import your lab
+      folder (File -- Open Folder). You should see a new folder on the left-hand
+      pane which contains arrested_development.html.
+      <li> Make a new Dart file, arrested_development.dart (File -- New File).
+      Put it in your lab directory by selecting the lab directory in the main
+      pane of the new file dialog as the parent of the new file. The editor will
+      generate an empty class body for you. You can delete it or ignore it, but
+      for today we're going to throw good object-oriented design out the window
+      and just write some top-level functions. This is very common when writing
+      small programs in scripting languages.
+      <li> Add the following code to arrested_development.html. The first line
+      links in your script; the second one bootstraps the browser to run Dart
+      code.
+      <br>
+      <code>
+      &lt;script type=&quot;application/dart&quot;
+      src=&quot;arrested_development.dart&quot;&gt;&lt;/script&gt;
+      <br>    &lt;script
+      src=&quot;https://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js&quot;&gt;&lt;/script&gt;
+      </code>
+      <li> Add a main method to arrested_development.dart. You can give it type
+      <code>void</code> or leave it untyped -- up to you. In order to use Dart
+      for client-side web programming, we need to import the
+      <code>dart:html</code> library. At the top of arrested_development.dart,
+      put the line
+      <br>
+      <code>import "dart:html";</code>
+      <br>
+      As a simple test to
+      make sure the code is making it into the browser, use the
+      <code>window.alert</code> method to output some sort of debug message. You
+      can look up the method signature at <a href="http://api.dartlang.org">the
+        api docs</a>.
+      <li> Save all your files and let's run the code! Click the green circle
+      with the arrow in the top control bar to run your app. This will launch
+      Dartium, a special build of Chrome which runs Dart code natively.
+      (To deploy a Dart application to other browsers, we would compile it to
+      Javascript first.) You should see the alert popup with your debug message.
+      If not, start debuggin'!
+      <li> Now we'll do some basic event handling. The first thing we need to do
+      is get a hold of one of the elements on the page. In
+      <code>dart:html</code>, we usually get elements by querying with CSS
+      selectors. In this case, we would like to get our hands on the Bananafy!
+      button. Use the <code>query</code> method to get at the Bananafy! button,
+      with something like the following line of code:
+      <br>
+      <code>var foo = query('selector');</code>
+      <br>
+      or, with types
+      <br>
+      <code>ButtonElement foo = query('selector');</code>
+      </br>
+      <li> Modify the code so that the alert message you made earlier doesn't
+      show up until the user clicks the button. The user's button click fires an
+      event in the browser, which causes the browser to run any event handlers
+      that have been registered with that button. To register an event handler,
+      use something like
+      <br>
+      <code>
+        button.on.click.add(handler);
+      </code>
+      <br>
+      where <code>handler</code> is some event-handling function. The Darty way
+      to deal with a simple case like this is to use an anonymous function,
+      which looks like this:
+      <br>
+      <code>
+        button.on.click.add((e) {
+          // your code here
+        });
+      </code>
+      <br>
+      Note that this is just like the syntax for a regular function, except
+      we've left off the name (hence "anonymous") and the type of
+      <code>e</code> (which happens to be <code>Event</code>). So if we weren't
+      taking advantage of all the sexy syntax here, we could have written
+      <br>
+      <code>
+        button.on.click.add(handler); <br>
+        void handler(Event e) { // code here }
+      </code>
+      <br>
+
+      <li> Let's do something useful now. We're going to make the Bananafy!
+      button take the user's text and print it, but Bananafied (i.e. turned an
+      awful shade of yellow). I won't give you all the code here, but here are
+      some hints:
+      <ul>
+        <li> There is already a CSS class that has the correct presentation --
+        take a look at the stylesheet that arrested_development.html links to.
+        <li> To make a new, say, paragraph element in code, call the constructor
+        <code> new ParagraphElement()</code>.
+        <li> To add an element to the page as a child of some other element, use
+        <code>element.nodes.add(child)</code>.
+        <li> To set the text content of an element, use <code>element.innerHTMl
+          = "content"</code>.
+        <li> To get access to an element's CSS classes, use
+        <code>element.classes</code>, which returns a list of classes that can
+        be added to (and removed from, but we don't care about that) with
+        <code>element.classes.add("foo")</code>. Alternatively, you can call
+        <code>element.classes.toggle("foo")</code> (although at least until
+        recently this was buggy/nonexistent).
+      </ul>
+
+      <li> Now let's implement the chocolate-dipped option: if the
+      chocolate-dipped box is checked, Bananafy! should give brown text instead
+      of yellow text. Two hints:
+      <ul>
+        <li> There's already a useful CSS style in the stylesheet defined for you.
+        <li> To get a boolean that is true if a checkbox is checked and false
+        otherwise, use <code>checkbox.checked</code>.
+      </ul>
+
+      <li> The last button, Four Thousand Dollar Suit, should take the input
+      given and output it with "Yeah, the guy wearing the four thousand dollar
+      suit is" prepended and "Come on!" appended. No hints this time, but it may
+      be helpful to Google for Dart string interpolation.
+
+      <li> Challenge problem: Arrested Development meets Charlie Kaufman. Add a
+      Malkovitch button that causes each word currently in the results section
+      with length more than 4 characters to be replaced by the word
+      "Malkovitch".
+    </ol>
+    
+    <pre>
+    </pre>
+  </body>
+</html>
