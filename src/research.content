@@ -1,0 +1,37 @@
+@BEGIN TITLE:
+Sam Hopkins---Research
+@END
+
+@BEGIN HEAD1:
+Sam Hopkins
+@END
+
+@BEGIN HEAD2:
+Research
+@END
+
+@BEGIN CONTENT:
+<h3 class="top_main_heading">Mathematics and Computer Science</h3>
+<p> My research as an undergraduate has spanned both sides of the traditional "Theory A" / "Theory B" divide (named for the volumes of <i>The Handbook of Theoretical Computer Science</i>). Currently, I work with <a href="http://www.cs.washington.edu/people/faculty/beame/">Paul Beame</a> on communication complexity lower bounds. I have in the past worked with <a href="http://www.cs.rutgers.edu/~allender/">Eric Allender</a> on Kolmogorov randomness and complexity  and at Google on the <a href="http://www.dartlang.org">Dart programming language</a>, specifically <a href="http://www.dartlang.org/articles/dart-web-components/">Dart Web Components</a>.
+<br>
+<br>
+<b>Papers and Other Documents</b>
+<br>
+<i>Communication Complexity:</i> <a href="nsf_research_proposal.pdf">NSF GRFP Research Proposal</a>
+  <br> 
+  <i>Kolmogorov Complexity:</i> <a href="http://eccc.hpi-web.de/report/2012/028/">
+  Kolmogorov Complexity, Circuits, and the Strength of Formal Theories of Arithmetic</a>.
+  <a href="http://www.cs.rutgers.edu/~allender/">Eric Allender</a>,
+  <a href=http://www.unisa.ac.za/default.asp?Cmd=ViewContent&ContentID=19874>George Davie</a>,
+  <a href=http://paul.rutgers.edu/~lbfried>Luke Friedman</a>,
+  Samuel B. Hopkins, and 
+  <a href=http://itcs.tsinghua.edu.cn/~tzameret>Iddo Tzameret</a>, submitted.
+  <br>
+  <i>Dart:</i> I wrote the experimental compiler modifications <a href="https://github.com/sigmundch/bleeding_edge">here</a> (now rotted) and an early version of the runtime system that has developed into <a href="http://github.com/dart-lang/dart-web-components">this</a>, among other things.
+  <br>
+  <i>Misc:</i> <a href="nsf_previous_research.pdf">NSF GRFP Statement of Previous Research</a>
+   
+
+<h3>Philosophy</h3>
+<p class="boxed">I have one publication in philosophy&mdash;a paper about <a href="http://plato.stanford.edu/entries/temporal-parts/">temporal parts</a>. You can find it <a href="http://commons.pacificu.edu/rescogitans/vol1/iss1/6/">here</a>. It was produced in a senior-level course in metaphysics with Professor <a href="http://faculty.washington.edu/bonjour/">Larry Bonjour</a>. My research with Bob Dumas in philosophy of mathematics is currently on hiatus.</p>
+@END

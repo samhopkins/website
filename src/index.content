@@ -1,0 +1,41 @@
+@BEGIN TITLE:
+Sam Hopkins
+@END
+
+@BEGIN HEAD1:
+Sam Hopkins
+@END
+
+@BEGIN HEAD2:
+UW Mathematics, Computer Science, and Philosophy
+@END
+
+@BEGIN CONTENT:
+
+<h3 class="top_main_heading">Who am I?</h3>
+<p>I'm an undergraduate student at the University of Washington. I study mathematics, computer science, and philosophy. My (ever-shifting) primary interests lie in complexity, theory of computation, and logic. I am also interested in algebra, programming languages, and philosophy of mathematics. Sometimes I even like to code. </p>
+<h3>Quick Facts</h3>
+<p>
+<em>Education</em>
+<br> University of Washington 2013 (Early Entrance through <a href="http://depts.washington.edu/cscy/">the Robinson Center</a>)
+<br> B.S. Mathematics and Computer Science, minor Philosophy
+<br>
+<br> <em>Employment</em>
+<br> Engineering Intern, Google (Summer 2012)
+<br> Tutor, Philosophy Writing Center (Fall 2010-Spring 2012)
+<br> TA, UW CSE (Fall 2011)
+<br> Visiting Researcher, DIMACS Center for Discrete Mathematics and Theoretical
+<br> &nbsp;&nbsp;&nbsp;&nbsp; Computer Science, Rutgers University (Summer 2011)
+<br> TA, Robinson Center (Winter 2010, Summer 2010)
+<br>
+<br><em><a href="research.html">Publications (click through)</a></em>
+<br>
+<br><em>Honors and Awards</em>
+<br>Recipient, James A. Hewitt, Jr. Endowed Scholarship (2011)
+<br>UW Philosophy Outstanding Undergraduate Scholar (2011)
+<br>Phi Beta Kappa (2011)
+<br>Dean's List (2008-present)
+        </p>
+<h3>Contact</h3>
+<p class="boxed">You can find me at (firstname)(first three letters of my last name) AT uw DAWT edu. There are no parentheses in my actual email address.</p>
+@END

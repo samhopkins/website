@@ -1,0 +1,30 @@
+@BEGIN TITLE:
+Sam Hopkins--Notes and Resources
+@END
+
+@BEGIN HEAD1:
+Sam Hopkins
+@END
+
+@BEGIN HEAD2:
+Notes and Resources (non-research)
+@END
+
+@BEGIN CONTENT:
+
+<h3>Math and Computer Science Notes</h3>
+<p>
+A derivation of the Y-combinator from the recursion theorem <a href="notes/ycombinator_recursion_theorem.pdf">pdf</a>
+<br>
+<i>Up to Our Gonads in Monads: Mommy, Where Does &#62;&#62;&#61; Come From?</i> A summary of category-theoretic monads and Eugenio Moggi's classic <i>Computational Lambda-Calculus and Monads,</i> LICS 1989, for Haskell programmers (written for Dan Grossman's CSE 505 course) <a href="notes/technical_perspective_moggi.pdf">pdf</a>
+<br>
+
+<h3>Outreach</h3>
+<p>
+<i>Thinking about programming language design and an introduction to web programming (for Lakeside School computer science).</i> For students who have only seen Java, an introduction to web programming is a great forum to think for the first time about differences between programming languages and what goes into the design of a programming language, and it allows for students with basic programming experience to get something working quickly in a new language. I talk about Dart because it's what I know well and it's easy for Java-only students to pick up, but Javascript would probably work equally well.
+<br>
+<a href="https://docs.google.com/presentation/d/1B0cT8HQt-JARZyCPQqf_FT04utUckznuim_gUUpLMl0/edit">slides</a> (which also have some material on internships in computer science) 
+<br>
+<a href="lab/lab.html">coding exercise</a>.
+<br>
+@END
