@@ -51,6 +51,7 @@ h2 {
 	font-family:Arial, Verdana, Helvetica, sans-serif;
 	font-weight:300;
 	background-color:#FFFFFF;
+  text-indent:2em;
 }
 h3 {
 	color:#3366AA;
@@ -98,12 +99,11 @@ h3 {
 	color:#777777;
 	border-bottom:1px;
 	border-left:1px;
-	border-right:1px;
-	border-top:0px;
+	border-top:1px;
+  border-right:0px;
 	border-style:solid;
 	border-color:#AAAAAA;
 	background-color:#FFFFFF;
-	line-height:20px;
 	padding:5px;
 }
 #leftcontent a:hover {
@@ -173,4 +173,11 @@ h3 {
 	float:left;
 	font-size:100%;
 	margin-top:5px;
+}
+.topImg {
+  color: #777777;
+  background-color: #FFFFFF;
+  float:right;
+  margin:8px;
+  display:block;
 }
