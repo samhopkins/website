@@ -82,7 +82,7 @@ def build_page(page):
     content_handle.close()
     dest_handle.close()
 
-    os.chmod(dest_path, 0777)
+    os.chmod(dest_path, 0755)
 
   except IOError:
     print 'Error opening file for ' + page + '. Aborting this page.'
