@@ -34,4 +34,6 @@ A derivation of the Y-combinator from the recursion theorem <a href="notes/ycomb
 <br>
 <a href="https://github.com/samhopkins/website">source files</a> for this website
 <br>
+<a href="https://github.com/samhopkins/lambdac">lambdac:</a> I've never written a compiler end-to-end---a great source of shame. I occasionally hack on lambdac, a lambda-calculus compiler, to slowly remedy the situation.
+<br>
 @END
