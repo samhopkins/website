@@ -14,9 +14,11 @@ Notes and Resources (non-research)
 
 <h3>Math and Computer Science Notes</h3>
 <p>
-A derivation of the Y-combinator from the recursion theorem <a href="notes/ycombinator_recursion_theorem.pdf">pdf</a>
+A derivation of the Y-combinator from the recursion theorem <a href="notes/ycombinator_recursion_theorem.pdf">pdf</a> <a href="notes/ycombinator_recursion_theorem.tex">tex</a>
+
 <br>
-<i>Up to Our Gonads in Monads: Mommy, Where Does &#62;&#62;&#61; Come From?</i> A summary of category-theoretic monads and Eugenio Moggi's classic <i>Computational Lambda-Calculus and Monads,</i> LICS 1989, for Haskell programmers (written for Dan Grossman's CSE 505 course) <a href="notes/technical_perspective_moggi.pdf">pdf</a>
+<i>Up to Our Gonads in Monads: Mommy, Where Does &#62;&#62;&#61; Come From?</i> A summary of category-theoretic monads and Eugenio Moggi's classic <i>Computational Lambda-Calculus and Monads,</i> LICS 1989, for Haskell programmers (written for Dan Grossman's CSE 505 course) <a href="notes/technical_perspective_moggi.pdf">pdf</a> <a href="notes/technical_perspective_moggi.tex">tex</a>
+
 <br>
 
 <h3>Outreach</h3>
@@ -37,5 +39,7 @@ All of the following code is totally unsupported.
 <a href="https://github.com/samhopkins/website">source files</a> for this website
 <br>
 <a href="https://github.com/samhopkins/lambdac">lambdac:</a> I've never written a compiler end-to-end---a great source of shame. I occasionally hack on lambdac, a lambda-calculus compiler, to slowly remedy the situation.
+<br>
+my standard tex configuration (used in some of the tex files on this site) <a href="notes/samlogicmath.sty">sty</a>
 <br>
 @END
