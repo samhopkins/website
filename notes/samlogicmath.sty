@@ -1,0 +1,95 @@
+\ProvidesPackage{samlogicmath}
+
+% Load packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{sectsty}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[top=1.25in, bottom=1.25in, left=1.3in, right=1.3in]{geometry}
+
+% Make some new functions, yo!
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\dm}{dim}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Con}{Con}
+\DeclareMathOperator{\thry}{Th}
+\def\Div{\mathop{\operator@font div}\nolimits}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\ov}{ov}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Prov}{Prov}
+
+% Make \[[ and \]] allow multiline equation blocks
+\renewcommand{\[}{\begin{eqnarray*}}
+\renewcommand{\]}{\end{eqnarray*}}
+
+% Some logic, set theory, and linear algebra command definitions
+\renewcommand{\iff}{\leftrightarrow}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\set}[1]{ \{ #1 \} }
+\newcommand{\inn}[1]{ \langle #1 \rangle }
+\newcommand{\oa}{\overrightarrow}
+\renewcommand{\models}{\vDash}
+\newcommand{\forces}{\Vdash}
+\newcommand{\proves}{\vdash}
+\newcommand{\oldphi}{\phi}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\hat}{\widehat}
+\newcommand{\pttreduce}{\leq_{tt}^\P}
+
+% A few font commands
+\renewcommand{\b}{\mathbf}
+
+% Get theorem environments set up
+\newtheorem{clm}{Claim}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thmnonum}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lemnonum}{Lemma}
+\newtheorem*{prob}{Problem}
+\theoremstyle{definition}
+\newtheorem*{sol}{Solution}
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{propnonum}{Proposition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+
+% Make sexy marginalia
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}
+
+% Set up the title block
+\pretitle{\begin{center} \Large \scshape} 
+\posttitle{\vskip 0.4em \hrule \end{center}}
+\preauthor{\begin{center} \large}
+\postauthor{\end{center}}
+\predate{\begin{center}}
+\postdate{\end{center}}
+
+% Set up headers
+\lhead{\scshape \theauthor}
+\rhead{\scshape \rightmark}
+\pagestyle{fancy}
+	
+% Set margin and allow user control over spacing
+% \usepackage{setspace}
+% \usepackage[margin=1.25in]{geometry}
+

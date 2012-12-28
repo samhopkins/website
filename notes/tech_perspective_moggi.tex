@@ -1,0 +1,330 @@
+\documentclass{article}
+\ProvidesPackage{samlogicmath}
+
+% Load packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{sectsty}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[top=1.0in, bottom=1.0in, left=1.0in, right=1.0in]{geometry}
+
+% Make some new functions, yo!
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\dm}{dim}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Con}{Con}
+\DeclareMathOperator{\thry}{Th}
+\def\Div{\mathop{\operator@font div}\nolimits}
+\DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\ov}{ov}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Prov}{Prov}
+
+% Make \[[ and \]] allow multiline equation blocks
+\renewcommand{\[}{\begin{eqnarray*}}
+\renewcommand{\]}{\end{eqnarray*}}
+
+% Some logic, set theory, and linear algebra command definitions
+\renewcommand{\iff}{\leftrightarrow}
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\set}[1]{ \{ #1 \} }
+\newcommand{\inn}[1]{ \langle #1 \rangle }
+\newcommand{\oa}{\overrightarrow}
+\renewcommand{\models}{\vDash}
+\newcommand{\forces}{\Vdash}
+\newcommand{\proves}{\vdash}
+\newcommand{\oldphi}{\phi}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\hat}{\widehat}
+\newcommand{\pttreduce}{\leq_{tt}^\P}
+
+% A few font commands
+\renewcommand{\b}{\mathbf}
+
+% Get theorem environments set up
+\newtheorem{clm}{Claim}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thmnonum}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem*{lemnonum}{Lemma}
+\newtheorem*{prob}{Problem}
+\theoremstyle{definition}
+\newtheorem*{sol}{Solution}
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{prop*}{Proposition}
+\newtheorem{conj}{Conjecture}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{propnonum}{Proposition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{defnnonum}{Definition}
+\newtheorem{rem}[thm]{Remark}
+
+% Set up the title block
+\pretitle{\begin{center} \Large } 
+\posttitle{\vskip 0.4em \hrule \end{center}}
+\preauthor{\begin{center} \large}
+\postauthor{\end{center}}
+\predate{\begin{center}}
+\postdate{\end{center}}
+
+% Set up headers
+\lhead{\scshape \theauthor}
+\rhead{\scshape \rightmark}
+\pagestyle{fancy}
+  
+
+\usepackage{setspace}
+\usepackage{color}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[all]{xy}
+\usepackage{mathpartir}
+\newcommand{\sembrack}[1]{[\![#1]\!}
+  \title{Up to Our Gonads in Monads: Mommy, Where Does \texttt{>>=} Come From?}
+\author{Sam Hopkins}
+\begin{document}
+\fancyheadoffset[LE,RO]{0pt}{\marginparsep + \marginparwidth}
+\maketitle
+\begin{abstract}
+  Technical perspective on \cite{moggi89}, for Dan Grossman's CSE 505, Fall
+  2012. The intended audience is young Haskell children who have been so brazen
+  as to ask the (sub)titular question.
+  \emph{Disclaimer:} All the mathematics in this paper is
+  only morally correct: the intuitions are right,
+  but the technical details are often lacking or flat-out wrong.
+\end{abstract}
+
+\paragraph{Introduction} Just what is a monad, anyway? Haskell programmers are
+used to using them to handle IO and state, but the relationship between monads
+and computation runs deeper than that. Well before the first release of the
+Glasgow Haskell Compiler, Eugenio Moggi's \cite{moggi89} laid out the
+foundational relationship between monads and computation. We will survey the
+paper's main ideas in a fashion accessible to anybody with just some experience
+using, say the \texttt{IO} monad.
+
+\paragraph{Abstract Nonsense} We cannot do justice to Moggi's paper
+without a preliminary introduction to \emph{category theory}.  Category theory
+first arose in the 1940s from a branch of mathematics called, \emph{algebraic
+topology} (which is also related to programming languages, see \cite{htt}). It
+has grown into both a branch of mathematics unto itself and a spectacularly
+useful mathematical tool. As we will employ it here, category theory provides a
+mathematical language at the right level of abstraction (and as any programmer
+knows, a language at the right level of abstraction for the task at hand is a
+valuable thing indeed). The definitions that follow difficult to
+motivate without becoming acquainted with a great many examples: the interested
+computer scientist should consult \cite{pierce1991}; the
+mathematically-inclined should consult \cite{mac1998}.  
+\begin{defnnonum}
+  A \emph{category} $\mathcal C$ is a collection of objects, denoted
+  $Ob(\mathcal C)$, so that for each $A,B \in Ob(\mathcal C)$ there is a set of
+  \emph{morphisms from $A$ to $B$}. If $f$ is such a morphism, we write $f: A
+  \rightarrow B$. Furthermore, composition of morphisms is well-defined: if $f:A
+  \rightarrow B$ and $g : B \rightarrow C$ then there is $f \circ g : A
+  \rightarrow C$, and each object $A$ has a special identity morphism $id_A : A
+  \rightarrow A$ so that for any morphism $f: B \rightarrow A$, $id_A \circ f =
+  f$, and for any morphism $g: A \rightarrow B$, $g \circ id_A = g$.
+\end{defnnonum}
+
+Moggi's observation is that, in the presence of not too much more
+structure, we can define a notion of computation in the setting of a general
+category. Moggi gives an (extremely simple) programming language and provides an
+\emph{interpretation} of the programming language into an arbitrary category
+(with this additional structure): given a well-typed program $P$, a category
+$\mathcal C$, and assignments of all the basic types in the language (e.g.
+\texttt{int}) to objects in $\mathcal C$, and basic operations on those types
+(e.g. \texttt{+}) to appropriate morphisms in $\mathcal C$, we can find a
+morphism corresponding to $P$. The internal structure of the category: which
+morphisms there are, between which objects, reflects the structure of the set of
+programs in the language: what programs there are, and between what types.
+
+We need to grapple with this extra structure (which should look very familiar to
+Haskell programmers).
+\begin{defnnonum} A \emph{Kleisi triple}\footnote{From any Kleisi triple we can
+  recover a \emph{monad} over $\mathcal C$, which has a slightly different
+  definition. Kleisi triples provide a better inuitive understanding of the
+structure.} over $\mathcal C$ is a triple
+$(T,\eta,*)$, where $T$ associates to each object $A$ another object $TA$,
+$\eta$ associates to each object $A$ a morphism $\eta_A : A \rightarrow TA$, and
+$*$ is a unary operator on morphisms, so that if $f: A \rightarrow TB$ then
+$f^*: TA \rightarrow TB$\footnote{For the jargon-curious: $T$ is almost what we
+  would call a \emph{functor} from $\mathcal C$ to itself (it needs to be
+  extended to operate on morphisms, but the extension is straightforward), and
+  $\eta$ then becomes a \emph{natural transformation} from the identity functor
+on $\mathcal C$ to $T$.}, so that the following laws hold. We will express these
+laws in the form of \emph{commuting diagrams},\footnote{Can't have a paper about
+categories without some commuting diagrams!} but dear reader do not
+fear!\footnote{I'm looking at you, Dan.} We read the diagrams in the obvious
+fashion: the nodes in the graph are objects in $\mathcal C$, and the arrows are
+morphisms. The rule is that any path around the diagram (composing morphisms as
+you go around) must give the same morphism.
+\begin{mathpar}
+  \xymatrix@+=1.0cm{
+    TA \ar[r]^{f^*}  & TB\\
+    A \ar[u]^{\eta_A} \ar[ur]_f & \\
+  }
+  \and
+  \xymatrix@+=1.0cm{
+    TA \ar@{->}@/^/[r]^{\eta_A^*}  \ar@{->}@/_/[r]_{id_{TA}} & TA\\
+  }
+  \and
+  \xymatrix@+=1.0cm{
+    TA \ar[d]_{f^*} \ar[dr]^{(g^* \circ f)^*} & \\
+    TB \ar[r]_{g^*} & TC\\
+  }
+\end{mathpar}
+\end{defnnonum}
+We might think of a Kleisi triple as a world where computation can take place.
+Here's some intuition. Think of the objects as types. If $A$ is an object, then
+$TA$ is the object of $A$-computations, $\eta_A$ represents a trivial program
+which given an $A$ just returns the computation that, when run, gives back that
+$A$, and $*$ takes a program $f$ which takes an $A$ and modifies it to take a
+$TA$, by first running the $A$-computation and then feeding the result to $f$.
+It turns out (and we will see evidence for it) that the three laws above are
+enough to formalize these intuitions.
+
+It is worth keeping in mind the special case (being careful not to get trapped
+in it!) where $\mathcal C$ is the category of sets and we are just interested in
+deterministic computation without side-effects. Then $TA$ is just 
+the set $A$ augmented with a special element (usually written $\perp$) to
+denote non-haltingness; $TA$ then captures all the possible behaviors of a
+program that ``should'' output an $A$. But it is important to remember that the
+notion is much more general than this (indeed, the objects need not even be
+sets, in which case the intuitive account above is questionable), and by
+defining $(T,\eta,*)$ appropriately we can capture all sorts of computation
+paradigms: nondeterministic computation, computation with side-effects, etc. (It
+is a worthwhile exercise to formulate the appropriate definitions for these two
+examples.\footnote{Hints: powerset, Cartesian product, respectively.})
+
+\paragraph{Concrete Sense} Let's connect these back to Haskell's
+\texttt{Monad}s. \texttt{Monad} defines two operations, \texttt{return}
+and \texttt{>>=} (bind). Clearly our $\eta$ is just
+\texttt{return}: it injects values into computations.\footnote{Indeed, were we
+being more mathematically correct we would have required that $\eta_A$ be mono
+for all $A$. When the category is $\mathbf{Set}$, mono means injective.} Bind is
+very nearly our lifting operator $*$; we could define $*$ in Haskell with
+\texttt{star f = \textbackslash x -> x >>= f}. \texttt{Monad}s in Haskell obey
+three laws:
+\begin{eqnarray}
+\texttt{return a >>= k}  & \texttt{=} & \texttt{k a}\\
+  \texttt{m >>= return}  & \texttt {=} & \texttt{m}\\
+\texttt{m >>= (\textbackslash x -> k x >>= h)} & \texttt{=} & \texttt{(m >>= k) >>= h}
+\end{eqnarray}
+The interested reader can verify (and it is instructive to do so) that these
+laws correspond (in order) exactly to our three diagrams above.
+
+\paragraph{Equivalence and Existence} It is reasonable to ask why in the world
+we have put all this work into formulating wild abstractions when all we got
+back were \texttt{Monad}s with some pretty diagrams for the
+(yet-to-be-explained) monad laws. Moggi seeks to capture the intutive notion of a
+computation in the most general setting possible. A worthwhile criterion of
+success in this endeavor is whether the intutive notions of equivalence and
+halting acquire natural definitions in this setting. The categorical approach
+permits this investigation.
+
+When working over a general category with Moggi's simplified language, the
+definition of equivalence becomes extremely natural: programs are equivalent
+just in case they correspond to the same morphism. The notion of halting becomes
+a special case (for deterministic, non-side-effecting computation) of something
+more general that Moggi terms ``existence''. A program exists if the morphism
+$f: A \rightarrow TB$ to which it corresponds can be expressed as $f = \eta_B
+\circ h$ for some $h: A \rightarrow B$. Roughly, this says that there is a
+well-defined non-computational morphism that the program represents in
+computational form. That existence and equivalence are so readily definable
+suggests that far from just being a way to hide I/O or statefulness,
+\texttt{Monad}s and their attendant laws express the conditions satisfied by a
+\emph{computation strategy}.
+
+\paragraph{Expanding the Language} We have managed thus far to avoid the main
+technical contribution of \cite{moggi89} (everything up till now is just kid
+stuff!), but no longer. The simplified language allows for an arbitrary
+collection of basic types and operations on values of those types, but the only
+way to compose those operations is with \texttt{let} (i.e. \texttt{let x = e1 in
+e2}), and, even worse, the only variable that \texttt{e2} can use which it does
+not define itself is \texttt{x}. This means that in the program 
+\[
+  \texttt{let x = e1 in let y = e2 in e3}
+\] 
+the expression \texttt{e3} cannot use \texttt{x}. These restrictions make it
+very straightforward to define the correspondence between \texttt{let} and
+composition in the Kleisi triple, but they reveal that the generality of this of
+notion of computation is makes it in some ways considerably less expressive than
+a full-fledged programming language.
+
+The main technical contribution of \cite{moggi89} is to extend these monadic
+semantics to a fuller programming language, which has functions, and in which
+expressions can use more than one variable that they do not define themselves.
+The general categorical technique for the interpretation of functions was known
+well before \cite{moggi89}; sparing the reader the categorical details we will
+just mention that there is a good categorical defnition (i.e. in terms just of
+morphisms and diagrams) of ``the object of morphisms from $A$ to $B$,'' denoted
+$B^A$. A function type \texttt{t1 -> t2} then corresponds to
+$(T\sembrack{\texttt{t1}})^{\sembrack{\texttt{t2}}}$, where
+$\sembrack{\texttt{t1}}$ is the object corresponding to type \texttt{t1} and
+similarly for $\sembrack{\texttt{t2}}$.
+This gives a nice
+categorical restriction on our choice of Kleisi triple if we want to be able to
+define a full programming language: the underlying category must have the
+appropriate exponential objects.
+
+The other challenge, dealing with multiple undefined variables in an expression,
+is a little more accessible. We would like for an expression \texttt{e} using
+two undefined variables \texttt{x} and \texttt{y} to correspond to a morphism $A
+\times B \rightarrow TC.$\footnote{Again, we will not bother with the details of
+products $A \times B$ in general categories. The concerned reader may assume
+that we're working over $\mathbf{Set}$.} Then running the program with one input
+of the type corresponding to $A$ and a second of the type corresponding to $B$
+would give a $C$-computation. In order to make this play nice with monadic
+composition, we need a way to move between $A \times TB$ and $T(A \times B)$,
+and ``good'' morphisms between those two objects are not guaranteed to exist in
+general. Moggi defines the properties of the desired morphisms and in the
+restricted class of structures in which they are present (\emph{strong monads}
+with some special exponential objects to deal with the interaction of functions
+and multiple variables) provides the appropriate interpretation of a
+fully-powered programming language.  Out of this falls some augmentation of the
+definition of program equivalence and existence in the setting of a full-power
+programming language; the augmented logic for equivalence and existence is the
+\emph{$\lambda_C$-calculus}.
+
+One last question arises. Haskell's \texttt{Monad}s are clearly strong enough to
+represent full-powered programming langauges (indeed, it is common to use them
+to implement interpreters and compilers). Why do we not need to provide the
+additional structure with which Moggi augemnts his Kleisi triples when we
+instantiate \texttt{Monad}? The answer is not so obvious,
+and this author has sketched only a preliminary argument, but it appears that
+other features of the type system guarantee the existence of the required extra
+structure; this in turn follows from a condition given by Moggi for the
+existence and uniqueness of strong monads.
+
+\paragraph{Termination} Let's do one last survey of the lay of the land.
+Category-theoretic monads (we have used a slightly different formulation, Kleisi
+triples) provide a general setting for computation; the fact that they capture a
+wide variety of computational paradigms (nondeterministic, probabilistic, etc.)
+while simultaneously allowing for extremely natural definitions of equivalence
+and existence is evidence that monads give us the right level of structural
+abstraction. \cite{moggi89} offers the interpretation of a programming language
+into \emph{one} monad, but Haskell \emph{reifies} monads with \texttt{Monad}.
+\emph{Reification} is taking a concept used to describe the semantics of a
+language and inserting it into the language itself. \texttt{Monad} lets Hakell
+programmers define their own computational universes.  It is a convenient
+property of this reification that \texttt{Monad}s are isolated from each other
+and the core program; this allows the classic use of \texttt{Monad}s to isolate
+impure computation strategies from the (pure) Haskell
+core.
+
+\bibliographystyle{plainnat}
+\bibliography{bibliography}
+
+\end{document}
