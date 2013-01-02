@@ -1,3 +1,4 @@
 .htaccess
 test/
 .sass-cache/*
+*.swp
