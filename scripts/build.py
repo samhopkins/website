@@ -4,6 +4,10 @@
 # To add a new file, add an entry to PAGES, add a file <your_file>.content to
 # src/, and if you want to be able to link to it, add an entry to the navbar,
 # which lives in src/globals.
+#
+# Must be run from the top level directory -- i.e. run
+#
+#     python scripts/build.py
 
 # Various possible improvements:
 #   --build links and navbar for you
@@ -15,11 +19,11 @@ import shutil
 import sys
 
 # location of source files
-SRC_PATH = os.path.abspath('../src')
+SRC_PATH = os.path.abspath('./src')
 
 # location of destination files 
 # (remove or add 'test' to build to the sandbox or build to prod)
-DST_PATH = os.path.abspath('../')
+DST_PATH = os.path.abspath('./')
 
 # list of pages to build, and with what template
 PAGES = {
@@ -31,7 +35,7 @@ PAGES = {
         }
 
 # location of global content
-GLOBAL_PATH = os.path.abspath('../src/globals')
+GLOBAL_PATH = os.path.abspath('./src/globals')
 
 # useful regexes
 var_use_regex = r'(\$)(.*)(\$)'
