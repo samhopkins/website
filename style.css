@@ -150,7 +150,8 @@ h3 {
   width: 750px;
   font-size: 12px; }
   #footer a {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #777777; }
     #footer a:hover {
       color: #AAAAAA;
       text-decoration: underline; }
