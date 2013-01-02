@@ -1,58 +1,71 @@
+$background-color: #FFFFFF;
+$text-color: #777777;
+
+@mixin std-text-bg {
+  color: $text-color;
+  background-color: $background-color;
+  font-family: arial, verdana, helvetica, sans-serif;
+}
+
 body {
-	font-family:arial, verdana, helvetica, sans-serif;
+  @include std-text-bg;
 	font-size:12px;
 	cursor:default;
-	color:#777777;
-	background-color:#FFFFFF
 }
+
 * {
 	margin: 0px;
 	padding: 0px;
 	text-decoration: none;
 }
+
 html {
 	height:100%;
 	margin-bottom:1px;
 }
+
 #container {
+  @include std-text-bg;
 	width: 750px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: left;
-	background-color: #FFFFFF;
-	color:#777777;
 }
+
 #header {
 	width:100%;
 	padding-top:15px;
 }
+
 .spacer {
 	width:100%;
 	height:15px;
 }
+
 hr {
 	border:0px;
-	color:#AAAAAA;
-	background-color:#CDCDCD;
+	color: #AAAAAA;
+	background-color: #CDCDCD;
 	height: 1px;
 	width: 100%;
 	text-align: left;
 }
+
 h1 {
 	font-size:28px;
 	color:#3366AA;
-	background-color:#FFFFFF;
+	background-color: $background-color;
 	font-family:Arial, Verdana, Helvetica, sans-serif;
 	font-weight:300;
 }
+
 h2 {
+  @include std-text-bg;
 	font-size:20px;
-	color:#777777;
-	font-family:Arial, Verdana, Helvetica, sans-serif;
 	font-weight:300;
-	background-color:#FFFFFF;
   text-indent:2em;
 }
+
 h3 {
 	color:#3366AA;
 	font-size:15px;
@@ -66,117 +79,120 @@ h3 {
 	font-weight:300;
 	padding:5px;
 }
+
 .top_main_heading {
 	margin-top:15px;
 }
+
 #left {
+  @include std-text-bg;
 	float:left;
 	width:200px;
-	background-color:#FFFFFF;
-	color:#777777;
 }
-#leftcontent p {
-	color:#777777;
-	background-color:#FFFFFF;
-	font-size: 12px;
-	text-align:left;
-	margin-left:20px;
-	margin-right:20px;
+
+#leftcontent {
+  @include std-text-bg;
+  p {
+    font-size: 12px;
+    text-align:left;
+    margin-left:20px;
+    margin-right:20px;
+  }
+  ul {
+    list-style:none;
+    padding-left:20px;
+  }
+  a {
+    color:#3366AA;
+    text-decoration:none;
+    font-size:16px;
+    &:hover {
+      color:#99AAAA;
+      text-decoration:underline;
+    }
+  }
 }
-#leftcontent ul {
-	list-style:none;
-	padding-left:20px;
-	color:#777777;
-	background-color:#FFFFFF;
-}
-#leftcontent a {
-	color:#3366AA;
-	text-decoration:none;
-	font-size:16px;
-	background-color:#FFFFFF;
-}
+
 .news {
-	color:#777777;
+  @include std-text-bg;
 	border-bottom:1px;
 	border-left:1px;
 	border-top:1px;
   border-right:0px;
 	border-style:solid;
 	border-color:#AAAAAA;
-	background-color:#FFFFFF;
 	padding:5px;
 }
-#leftcontent a:hover {
-	color:#99AAAA;
-	background-color:#FFFFFF;
-	text-decoration:underline;
-}
+
 #main {
 	float:left;
 	width:550px;
 	color:#999999;
-	background-color:#FFFFFF;
+	background-color: $background-color;
 	padding-bottom:20px;
 	background:url(img/background.png);
 }
-#maincontent p {
-	color:#777777;
-	background-color:#FFFFFF;
-	border-bottom:1px;
-	border-left:1px;
-	border-right:1px;
-	border-top:0px;
-	border-style:solid;
-	border-color:#AAAAAA;
-	margin-left:20px;
-	margin-right:20px;
-	margin-bottom:15px;
-	line-height:20px;
-	padding:20px;
+
+#maincontent {
+  // Can't lift std-text-bg due to a strange issue with the way the grey line
+  // between the navbar and the main content is created
+  p {
+    @include std-text-bg;
+    border-bottom:1px;
+    border-left:1px;
+    border-right:1px;
+    border-top:0px;
+    border-style:solid;
+    border-color:#AAAAAA;
+    margin-left:20px;
+    margin-right:20px;
+    margin-bottom:15px;
+    line-height:20px;
+    padding:20px;
+  }
+
+  a {
+    @include std-text-bg;
+    color:#3366AA;
+    text-decoration:none;
+    &:hover {
+      color:#99AAAA;
+      text-decoration:underline;
+    }
+  }
 }
-#maincontent a {
-	color:#3366AA;
-	background-color:#FFFFFF;
-	text-decoration:none;
-}
-#maincontent a:hover {
-	color:#99AAAA;
-	background-color:#FFFFFF;
-	text-decoration:underline;
-}
+
 #footer {
+  @include std-text-bg;
 	clear:both;
 	width:750px;
 	font-size:12px;
-	font-family:Verdana, Arial, Helvetica, sans-serif;
+
+  a {
+    text-decoration:none;
+    &:hover {
+      color:#AAAAAA;
+      text-decoration:underline;
+    }
+  }
 }
-#footer a {
-	color:#777777;
-	background-color:#FFFFFF;
-	text-decoration:none;
-}
-#footer a:hover {
-	color:#AAAAAA;
-	background-color:#FFFFFF;
-	text-decoration:underline;
-}
+
 .right {
-	color:#777777;
-	background-color:#FFFFFF;
+  @include std-text-bg;
 	float:right;
 	font-size:100%;
 	margin-top:5px;
 }
+
 .left {
-	color:#777777;
-	background-color:#FFFFFF;
+  @include std-text-bg;
 	float:left;
 	font-size:100%;
 	margin-top:5px;
 }
+
 .topImg {
-  color: #777777;
-  background-color: #FFFFFF;
+  @include std-text-bg;
   float:right;
   margin:8px;
   display:block;
