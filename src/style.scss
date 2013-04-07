@@ -52,18 +52,20 @@ hr {
 }
 
 h1 {
+  margin-top:20px;
 	font-size:28px;
 	color:#3366AA;
 	background-color: $background-color;
 	font-family:Arial, Verdana, Helvetica, sans-serif;
 	font-weight:300;
+  float:center;
 }
 
 h2 {
   @include std-text-bg;
-	font-size:20px;
+	font-size:18px;
 	font-weight:300;
-  text-indent:2em;
+  text-indent:1.5em;
 }
 
 h3 {
@@ -192,9 +194,17 @@ h3 {
 	margin-top:5px;
 }
 
-.topImg {
+.rightImg {
   @include std-text-bg;
   float:right;
   margin:8px;
   display:block;
+  border:2px solid #AAAAAA;
+}
+
+.leftImg {
+  @include std-text-bg;
+  float:left;
+  margin:8px;
+  display:inline;
 }

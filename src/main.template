@@ -24,6 +24,7 @@
 <div id="container">
 <div id="header">
 $SAMFACE$
+$PULLBACK$
 <h1>$HEAD1$</h1>
 <br>
 <h2>$HEAD2$</h2>
@@ -49,6 +50,7 @@ $SAMFACE$
 <hr />
 <p class="left">| <a href="http://jigsaw.w3.org/css-validator/">CSS</a> | <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> |</p>
 <p class="right">design by Matt Hollis &copy;2006, inspired by Adam Particka, modifications by Yours Truly.</p>
+<br>
 <p>&nbsp;</p>
 </div> <!-- end footer -->
 

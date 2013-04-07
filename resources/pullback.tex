@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{samlogicmath}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[all]{xy}
+\title{Website Diagrams}
+\author{Sam Hopkins}
+\begin{document}
+\[
+  \xymatrix@R=1.5pc@C=3pc{
+    W \ar@{-->}[dr] |(0.5) {\exists !} \ar@/_1pc/[ddr]_{\phi_2} \ar@/^1pc/[drr]^{\phi_1}\\
+    & X \times_Z Y \ar[r]^{\pi_X} \ar[d]_{\pi_Y} & X \ar[d]^f \\
+    & Y \ar[r]_g & Z\\
+   }
+\]
+
+\end{document}

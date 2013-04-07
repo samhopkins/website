@@ -40,19 +40,21 @@ hr {
   text-align: left; }
 
 h1 {
+  margin-top: 20px;
   font-size: 28px;
   color: #3366AA;
   background-color: white;
   font-family: Arial, Verdana, Helvetica, sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+  float: center; }
 
 h2 {
   color: #777777;
   background-color: white;
   font-family: arial, verdana, helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
-  text-indent: 2em; }
+  text-indent: 1.5em; }
 
 h3 {
   color: #3366AA;
@@ -172,10 +174,19 @@ h3 {
   font-size: 100%;
   margin-top: 5px; }
 
-.topImg {
+.rightImg {
   color: #777777;
   background-color: white;
   font-family: arial, verdana, helvetica, sans-serif;
   float: right;
   margin: 8px;
-  display: block; }
+  display: block;
+  border: 2px solid #aaaaaa; }
+
+.leftImg {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  float: left;
+  margin: 8px;
+  display: inline; }
