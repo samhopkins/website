@@ -5,6 +5,7 @@
 	<li><a href="school.html">School</a></li>
 	<li><a href="notes.html">Notes and Resources</a></li>
 	<li><a href="personal.html">Personal</a></li>
+        <li><a href="theory_tea/current_tea.html">Theory Tea</a></li>
 </ul>
 @END
 

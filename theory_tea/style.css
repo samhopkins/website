@@ -1,0 +1,192 @@
+body {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  font-size: 12px;
+  cursor: default; }
+
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none; }
+
+html {
+  height: 100%;
+  margin-bottom: 1px; }
+
+#container {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  width: 750px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left; }
+
+#header {
+  width: 100%;
+  padding-top: 15px; }
+
+.spacer {
+  width: 100%;
+  height: 15px; }
+
+hr {
+  border: 0px;
+  color: #AAAAAA;
+  background-color: #CDCDCD;
+  height: 1px;
+  width: 100%;
+  text-align: left; }
+
+h1 {
+  margin-top: 20px;
+  font-size: 28px;
+  color: #3366AA;
+  background-color: white;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-weight: 300;
+  float: center; }
+
+h2 {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  text-indent: 1.5em; }
+
+h3 {
+  color: #3366AA;
+  font-size: 15px;
+  background-color: #F9F9F9;
+  border-width: 1px;
+  border-color: #AAAAAA;
+  border-style: solid;
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-weight: 300;
+  padding: 5px; }
+
+.top_main_heading {
+  margin-top: 15px; }
+
+#left {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  float: left;
+  width: 200px; }
+
+#leftcontent {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif; }
+  #leftcontent p {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px; }
+  #leftcontent ul {
+    list-style: none;
+    padding-left: 20px; }
+  #leftcontent a {
+    color: #3366AA;
+    text-decoration: none;
+    font-size: 16px; }
+    #leftcontent a:hover {
+      color: #99AAAA;
+      text-decoration: underline; }
+
+.news {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-top: 1px;
+  border-right: 0px;
+  border-style: solid;
+  border-color: #AAAAAA;
+  padding: 5px; }
+
+#main {
+  float: left;
+  width: 550px;
+  color: #999999;
+  background-color: white;
+  padding-bottom: 20px;
+  background: url(img/background.png); }
+
+#maincontent p {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  border-bottom: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-top: 0px;
+  border-style: solid;
+  border-color: #AAAAAA;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  line-height: 20px;
+  padding: 20px; }
+#maincontent a {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  color: #3366AA;
+  text-decoration: none; }
+  #maincontent a:hover {
+    color: #99AAAA;
+    text-decoration: underline; }
+
+#footer {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  clear: both;
+  width: 750px;
+  font-size: 12px; }
+  #footer a {
+    text-decoration: none;
+    color: #777777; }
+    #footer a:hover {
+      color: #AAAAAA;
+      text-decoration: underline; }
+
+.right {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  float: right;
+  font-size: 100%;
+  margin-top: 5px; }
+
+.left {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  float: left;
+  font-size: 100%;
+  margin-top: 5px; }
+
+.rightImg {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  float: right;
+  margin: 8px;
+  display: block;
+  border: 2px solid #AAAAAA; }
+
+.leftImg {
+  color: #777777;
+  background-color: white;
+  font-family: arial, verdana, helvetica, sans-serif;
+  float: left;
+  margin: 8px;
+  display: inline; }
