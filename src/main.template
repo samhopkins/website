@@ -24,7 +24,7 @@
 <div id="container">
 <div id="header">
 $SAMFACE$
-$PULLBACK$
+$MAXCUT$
 <h1>$HEAD1$</h1>
 <br>
 <h2>$HEAD2$</h2>
