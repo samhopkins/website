@@ -12,53 +12,38 @@ PhD Student, Cornell University
 
 @BEGIN CONTENT:
 
-<h3 class="top_main_heading">Who am I?</h3>
-<p>I'm a PhD student in the <a href="http://www.cs.cornell.edu/">Department of
-Computer Science</a> at Cornell
-University, where I am in the 
-<a href="http://www.cs.cornell.edu/Research/theory/index.htm">
-Theory of Computing</a> group. I am advised by <a href="http://www.cs.cornell.edu/~dsteurer/">David Steurer</a>.
-My research interests are in complexity and algorithms. I am also interested in
-type theory, design of programming languages, and logic in computer science.
-In a past life, I was an undergraduate at the University of Washington, where I
-studied mathematics, computer science, and philosophy.
+<a name="about"></a>
+<h3 class="top_main_heading" name="about">About Me</h3>
+<p>I'm a PhD student at Cornell University, advised by <a target="_blank" href="http://www.cs.cornell.edu/~dsteurer/">David Steurer</a>.
+I think about algorithms and complexity, especially average-case analysis and semidefinite programming hierarchies.
+I was an undergraduate at the University of Washington, where I studied mathematics, computer science, and philosophy.
 <br>
 
-<h3>Quick Facts</h3>
+
+<a name="papers"></a>
+<h3>Papers</h3>
 <p>
-<em>Education</em>
-<br> PhD student, Cornell University (2013- &nbsp;)
+<em>Speeding up Sum-of-Squares for Tensor Decomposition and Planted Sparse Vectors</em>
+<br>Samuel B. Hopkins, Tselil Schramm, Jonathan Shi, David Steurer. In Preparation.
 <br>
-<br> University of Washington 2013 (Early Entrance through <a href="http://depts.washington.edu/cscy/">the Robinson Center</a>)
-<br> B.S. Mathematics and Computer Science, minor Philosophy
+<br><em>On the Integrality Gap of Degree-4 Sum of Squares for Planted Clique</em>
+<br>Samuel B. Hopkins, Pravesh Kothari, Aaron Potechin, Prasad Raghavendra, Tselil Schramm. SODA 2016.
+<br>merge of <a target="_blank" href="http://arxiv.org/pdf/1507.05230v1.pdf">this full version (Hopkins, Kothari, Potechin)</a> and <a target="_blank" href="http://arxiv.org/pdf/1507.05136v2.pdf">this one (Raghavendra, Schramm)</a>
 <br>
-<br> <em>Employment</em>
-<br> Engineering Intern, Google (Summer 2012)
-<br> Tutor, Philosophy Writing Center (Fall 2010-Spring 2012)
-<br> TA, UW CSE (Fall 2011)
-<br> Visiting Researcher, DIMACS Center for Discrete Mathematics and Theoretical
-<br> &nbsp;&nbsp;&nbsp;&nbsp; Computer Science, Rutgers University (Summer 2011)
-<br> TA, Robinson Center (Winter 2010, Summer 2010)
+<br><em>Tensor Principal Component Analysis via Sum-of-Squares Proofs</em>
+<br>Samuel B. Hopkins, Jonathan Shi, David Steurer. COLT 2015, 20 minute presentation.
+<br><a target="_blank" href="http://arxiv.org/pdf/1507.03269v1.pdf">full version</a>
 <br>
-<br><em><a href="research.html">Publications (click through)</a></em>
+<br><em>Kolmogorov Complexity, Circuits, and the Strength of Formal Theories of Arithmetic</em>
+<br>Eric Allender, George Davie, Luke Friedman, Samuel B. Hopkins, Iddo Tzameret. Chicago Journal of Theoretical Computer Science, 2013.
+<br><a target=_"blank" href="http://eccc.hpi-web.de/report/2012/028/">ECCC version </a>and <a target="_blank" href="http://cjtcs.cs.uchicago.edu/articles/2013/5/contents.html">journal version</a>
 <br>
-<br><em>Honors and Awards</em>
-<br>UW College of Arts and Sciences Dean's Medalist in Natural Science (2013)
-<br>UW Mathematics Outstanding Graduating Senior (2013)
-<br>UW Computer Science Outstanding Graduating Senior (2013)
-<br>National Science Foundation Graduate Research Fellow (2013)
-<br>Cornell University Fellow (2013)
-<br>James A. Hewitt, Jr. Endowed Scholar (2011)
-<br>UW Philosophy Outstanding Undergraduate Scholar (2011)
-<br>Phi Beta Kappa (2011)
-<br>Dean's List (2008-present)
-<br>
-<br> My <a href="http://en.wikipedia.org/wiki/Erdos_number">Erd&ouml;s
-number</a> is 3. <a href="http://en.wikipedia.org/wiki/Paul_erdos">Paul
-Erd&ouml;s</a> &rarr; <a href="http://en.wikipedia.org/wiki/Maria_Klawe">Maria
-Klawe</a> &rarr; <a href="http://en.wikipedia.org/wiki/Eric_Allender">Eric
-Allender</a> (also <a href="http://www.cs.rutgers.edu/~allender/">here</a>) &rarr; Me
-        </p>
-<h3>Contact</h3>
-<p class="boxed">You can find me at (firstname)(first three letters of my last name) AT uw DAWT edu. There are no parentheses in my actual email address.</p>
+<br><em>On Objects as Events and the Ontology of Temporal Parts</em>
+<br>Sam Hopkins. Res Cogitans, Summer 2010.
+<br><a target="_blank" href="http://commons.pacificu.edu/rescogitans/vol1/iss1/6/">journal version</a>
+
+<a name="more_info"></a>
+<h3>More Information</h3>
+<p><a target="_blank" href="cv.pdf">cv</a>
+<br>samhop at cs dot cornell dot edu
 @END
